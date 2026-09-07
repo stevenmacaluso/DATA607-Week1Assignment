@@ -36,7 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-8cd28541d0b632bcb9a40500c404761f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -69,6 +69,22 @@ ul.task-list li input[type="checkbox"] {
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>The chosen dataset contains information on real GDP and other macroeconomic indicators for selected nations during the years 1960-2020. The dataset can be found through the following link: <a href="https://www.kaggle.com/datasets/steelcrossx/gdp-inflation" class="uri">https://www.kaggle.com/datasets/steelcrossx/gdp-inflation</a>. Each row of data contains the associated country and year, as well as the associated country’s real GDP, nominal GDP, GDP deflator, inflation rate, and contribution to global GDP that year. Understanding economic trends throughout the years provides a good picture on how a country is developing economically, as well as the influence it has in the global economy during different time periods. Relating economic data to history is important for analyzing trends and making connections between the economy and the global or domestic affairs of a particular nation or group of nations. On top of this, comprehending historical economic data provides appropriate context relating to the economic systems and policies of nations today. As current events continue to affect the macroeconomy, it is becoming increasingly more important to have an understanding of the not-so-distant past.</p>
+</section>
+<section id="body" class="level2">
+<h2 class="anchored" data-anchor-id="body">Body</h2>
+<p>For this assignment, I will be isolating the economic data for the United States. First, I load tidyverse and read my data file, “gdpData.csv.”</p>
+<pre><code>library(tidyverse)
+gdpData &lt;- read.csv("gdpData.csv")</code></pre>
+<p>After reading the file, I then create a separate dataframe to isolate the United States economic data.</p>
+<pre><code>usData &lt;- gdpData %&gt;%
++     filter(country == 'the United States')</code></pre>
+<p>Now that the U.S. data is isolated, I can remove the unnecessary columns “country” and “year_country.” “Country” can be removed, as all of our rows are from the same country: the U.S. The column, “year_country” can be removed, as it acted as a unique identifier for the original dataset, but now the “year” column will serve that role.</p>
+<pre><code> usData &lt;- usData %&gt;% 
+ +     select(-c(year_country, country))</code></pre>
+</section>
+<section id="findings-and-recommendations" class="level2">
+<h2 class="anchored" data-anchor-id="findings-and-recommendations">Findings and Recommendations</h2>
+<p>The United States has seen a gradual increase in real and nominal GDP over the years. Speaking generally, the U.S.’s contribution to global GDP has shrunk over the years, as they were contributing to close to half of the global GDP in the 1960s, compared to a global GDP contribution of 27.00% in 2020. To provide some ideas to expand upon this work, finding correlations between the different macroeconomic indicators would provide valuable insights into the interconnected nature of the macroeconomy. I think a particularly interesting exercise would be to compare the inflation data with real GDP, as real GDP is not directly affected by a fluctuating inflation rate. Seeing the dynamic these two crucial economic indicators play in the macroeconomy of the U.S. each year, could provide an insight into if and how they influence each other, and by taking into consideration the domestic and global events that took place in each year, conclusions can be drawn on how these indicators are swayed.</p>
 </section>
 
 </main>
